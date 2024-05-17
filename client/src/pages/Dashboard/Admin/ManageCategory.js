@@ -108,10 +108,10 @@ function ManageCategory() {
   return (
     <>
       <Layout
-        title="Manage Categories - Admin Panel | TrendBlend"
-        description="Manage your categories in the admin panel of TrendBlend. Add, edit, and delete categories to organize your products effectively. Keep your store well-structured and user-friendly."
+        title="Manage Categories - Admin Panel | Al-Haq BookStore "
+        description="Manage your categories in the admin panel of  Al-Haq BookStore  Add, edit, and delete categories to organize your products effectively. Keep your store well-structured and user-friendly."
         keywords="admin panel, manage categories, category management, product categories, TrendBlend, e-commerce"
-        author="Usman"
+        author="Asad"
       >
         <div className="container-fluid py-5">
           <div className="row">

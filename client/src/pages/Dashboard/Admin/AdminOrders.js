@@ -45,10 +45,10 @@ export default function AdminOrders() {
   return (
     <>
       <Layout
-        title="Admin Orders - TrendBlend E-commerce"
-        description="Manage and track all orders on TrendBlend. Stay updated on order status, payment details, and delivery information. Streamline your order management process and ensure smooth operations for your e-commerce business."
-        keywords="admin orders, order management, order tracking, order status, payment details, delivery information, e-commerce business, TrendBlend"
-        author="Usman"
+        title="Admin Orders - Al-Haq BookStore"
+        description="Manage and track all orders on Al-Haq BookStore. Stay updated on order status, payment details, and delivery information. Streamline your order management process and ensure smooth operations for your e-commerce business."
+        keywords="admin orders, order management, order tracking, order status, payment details, delivery information, e-commerce business, Al-Haq BookStore"
+        author="Asad"
       >
         <div className="container-fluid py-5">
           <div className="row">

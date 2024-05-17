@@ -52,10 +52,10 @@ function Profile() {
   return (
     <>
       <Layout
-        title="User Profile - TrendBlend E-commerce"
-        description="Manage your user profile on the TrendBlend Dashboard. Update your personal information, manage account settings, and more. Enhance your user experience with the TrendBlend user profile features."
+        title="User Profile - Al-Haq BookStore"
+        description="Manage your user profile on the Al Haq Book Store Dashboard. Update your personal information, manage account settings, and more. Enhance your user experience with the Al Haq Book Store user profile features.."
         keyword="User profile, account settings, personal information, TrendBlend Dashboard, user experience"
-        author="Usman"
+        author="Asad"
       >
         <div className="container-fluid py-5">
           <div className="row">

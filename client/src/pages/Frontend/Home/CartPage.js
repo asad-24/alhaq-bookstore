@@ -76,48 +76,45 @@ function CartPage() {
     }
   };
 
-  // // get payments gateway token
-  // const getToken = async () => {
-  //   try {
-  //     const { data } = await axios.get(
-  //       `${PORT}/api/v1/product/braintree/token`
-  //     );
-  //     setClientToken(data?.clientToken);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-  // useEffect(() => {
-  //   getToken();
-  // }, [auth?.token]);
+  // get payments gateway token
+  const getToken = async () => {
+    try {
+      const { data } = await axios.get(
+        `${PORT}/api/v1/product/braintree/token`
+      );
+      setClientToken(data?.clientToken);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    getToken();
+  }, [auth?.token]);
 
-  // // handle payments
-  // const handlePayments = async () => {
-  //   try {
-  //     setLoading(true);
-  //     const { nonce } = await instance.requestPaymentMethod();
+  // handle payments
+  const handlePayments = async () => {
+    try {
+      setLoading(true);
+      const { nonce } = await instance.requestPaymentMethod();
 
-  //     // Create a new array without the 'image' property
+      // Create a new array without the 'image' property
 
-  //     const { data } = await axios.post(
-  //       `${PORT}/api/v1/product/braintree/payment`,
-  //       { cart, nonce }
-  //     );
+      const { data } = await axios.post(
+        `${PORT}/api/v1/product/braintree/payment`,
+        { cart, nonce }
+      );
 
-  //     // console.log(data);
-  //     setLoading(false);
-  //     localStorage.removeItem("cart");
-  //     setCart([]);
-  //     window.location = "/dashboard/user/orders";
-  //     window.showToast("Payment completed successfully", "success");
-  //   } catch (error) {
-  //     console.error(error);
-  //     window.showToast(error.message, "error");
-  //   }
-  // };
-
-
-
+      // console.log(data);
+      setLoading(false);
+      localStorage.removeItem("cart");
+      setCart([]);
+      window.location = "/dashboard/user/orders";
+      window.showToast("Payment completed successfully", "success");
+    } catch (error) {
+      console.error(error);
+      window.showToast(error.message, "error");
+    }
+  };
   return (
     <>
       <Layout
@@ -129,7 +126,7 @@ function CartPage() {
         <HeroSection
           heading="Your Cart"
           paragraph="Review and manage items in your cart"
-          style="other"
+          style="home"
           page="cart"
         />
         {isLoading ? (

@@ -26,10 +26,10 @@ export default function ManageProduct() {
   return (
     <>
       <Layout
-        title="Manage Products - Admin Panel | TrendBlend"
-        description="Manage your products in the admin panel of TrendBlend. Add, edit, and delete products with ease. Stay organized and keep your inventory up-to-date."
-        keywords="admin panel, manage products, product management, inventory management, TrendBlend, e-commerce"
-        author="Usman"
+        title="Manage Products - Admin Panel |  Al-Haq BookStore "
+        description="Manage your products in the admin panel of  Al-Haq BookStore. Add, edit, and delete products with ease. Stay organized and keep your inventory up-to-date."
+        keywords="admin panel, manage products, product management, inventory management,  Al-Haq BookStore , e-commerce"
+        author="Asad"
       >
         <div className="container-fluid py-5">
           <div className="row">

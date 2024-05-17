@@ -29,10 +29,10 @@ function Orders() {
   return (
     <>
       <Layout
-        title="Your Orders Dashboard - TrendBlend E-commerce"
-        description="Welcome to the TrendBlend Dashboard! Here, you can manage your e-commerce store with ease. Stay updated on your store's performance, handle orders, manage products, and more. Experience the power and convenience of the TrendBlend Dashboard and take your e-commerce business to new heights."
+        title="Your Orders Dashboard - Al-Haq BookStore"
+        description="Welcome to the Al Haq Book Store Dashboard! Here, you can manage your online bookstore with ease. Stay updated on your store's performance, handle orders, manage products, and more. Experience the power and convenience of the Al Haq Book Store Dashboard and take your educational resource business to new heights.s."
         keyword="E-commerce dashboard, manage store, order management, product management, business performance"
-        author="Usman"
+        author="Asad"
       >
         <div className="container-fluid py-5">
           <div className="row">

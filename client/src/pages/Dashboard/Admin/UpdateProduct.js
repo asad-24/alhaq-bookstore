@@ -123,10 +123,10 @@ export default function UpdateProduct() {
   return (
     <>
       <Layout
-        title="Update Product - Admin Panel | TrendBlend"
-        description="Update a product in the admin panel of TrendBlend. Modify the product details, including name, description, price, quantity, category, and shipping information."
-        keywords="admin panel, update product, product management, product modification, TrendBlend, e-commerce"
-        author="Usman"
+        title="Update Product - Admin Panel |  Al-Haq BookStore"
+        description="Update a product in the admin panel of  Al-Haq BookStore . Modify the product details, including name, description, price, quantity, category, and shipping information."
+        keywords="admin panel, update product, product management, product modification, Al-Haq BookStore, e-commerce"
+        author="Asad"
       >
         <div className="container-fluid py-5">
           <div className="row">

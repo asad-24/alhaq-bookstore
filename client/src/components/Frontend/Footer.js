@@ -4,10 +4,11 @@ import { Link } from "react-router-dom";
 import {
   FaFacebookF,
   FaTwitter,
-  FaGoogle,
+  
+
   FaInstagram,
   FaLinkedin,
-  FaGithub,
+ 
   FaYoutube,
 } from "react-icons/fa";
 
@@ -16,8 +17,8 @@ const Footer = () => {
 
   return (
     <footer
-      className="text-center text-light py-3"
-      style={{ backgroundColor: "#f1f1f1" }}
+      className="text-center text-light py-3 footer-main bg-body-tertiary"
+     
     >
       <div className="container">
         <div className="row">

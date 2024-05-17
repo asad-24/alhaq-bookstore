@@ -15,8 +15,8 @@ function About() {
         page={"About"}
         style={"home"}
       />
-      <div className="container py-5">
-        <div className="row">
+      <div className="container-fluid py-5  ">
+        <div className="row px-3 ">
           <div className="col-12 col-lg-6 px-2">
             <img
               src={about}
@@ -39,8 +39,8 @@ function About() {
             </div>
           </div>
         </div>
-        <div  className="row">
-        <div className="col-12 px-2">
+        <div  className="row  bg-body-secondary px-5">
+        <div className="col-12 px-2 ">
         <h1 className="text-center py-3  fw-bold">
         Our Story </h1>
         <p className="text-start fs-5">

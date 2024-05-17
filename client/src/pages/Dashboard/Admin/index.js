@@ -6,10 +6,10 @@ function Index() {
   return (
     <>
       <Layout
-        title="Admin Dashboard - TrendBlend E-commerce"
-        description="Manage your e-commerce store with ease using the TrendBlend Admin Dashboard. Access powerful features to handle products, orders, customers, and more. Stay in control and streamline your e-commerce operations. Discover the convenience and efficiency of the TrendBlend Admin Dashboard."
+        title="Admin Dashboard - Al-Haq BookStore "
+        description="Manage your online bookstore with ease using the Al Haq Book Store Admin Dashboard. Access powerful features to handle products, orders, customers, and more. Stay in control and streamline your bookstore operations. Discover the convenience and efficiency of the Al Haq Book Store Admin Dashboard."
         keyword="E-commerce admin panel, dashboard, manage products, orders, customers, e-commerce operations"
-        author="Usman"
+        author="Asad"
       >
         <Admin />
       </Layout>

@@ -29,7 +29,7 @@ export default function SearchForm() {
   return (
     <form className="mx-auto d-flex" role="search" onSubmit={handleSubmit}>
       <input
-        className="form-control me-2 border-2 py-1 outline-primary "
+        className="form-control me-2 py-1 header-search "
         type="search"
         placeholder="Search"
         aria-label="Search"
@@ -37,7 +37,7 @@ export default function SearchForm() {
        
       />
       <button
-        className="btn btn-outline-primary rounded-4 py-1"
+        className="btn  rounded-4 py-1 search-btn"
         type="submit"
         disabled={loading}
         style={{ width: "6rem" }}

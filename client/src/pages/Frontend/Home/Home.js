@@ -119,7 +119,7 @@ function Home() {
       />
       <div className="container-fluid">
         <div className="row mt-3">
-          <div className="col-md-3 my-3">
+          <div className="col-md-3 my-3 shadow-box ">
             {filterLoading ? (
               <div className="text-center my-5">
                 <div className="loader"></div>

@@ -87,10 +87,10 @@ export default function GetSingleProduct() {
       description={
         isLoading
           ? "Loading product information..."
-          : `Learn more about ${product?.name} at TrendBlend.`
+          : `Learn more about ${product?.name} at Al-haq Bookstore.`
       }
       keyword={
-        product ? `${product?.name}, TrendBlend, e-commerce, product` : ""
+        product ? `${product?.name}, Bookstore, e-commerce, product` : ""
       }
       author="Usman"
     >
@@ -102,7 +102,7 @@ export default function GetSingleProduct() {
             : `About - ${product?.description.substring(0, 60)}`
         }
         heading={isLoading ? "" : product?.name}
-        style="other"
+        style="home"
       />
       {!isLoading && !error && (
         <div className="container mt-5 mb-3">
@@ -125,7 +125,7 @@ export default function GetSingleProduct() {
               </div>
               <div className="product-details my-3">
                 <h3 className="product-name mb-3">{product?.name}</h3>
-                <p className="product-category text-uppercase">
+                <p className="product-category text-uppercase fw-bold fs-5">
                   {product?.category?.name}
                 </p>
                 <p className="product-description">{product?.description}</p>

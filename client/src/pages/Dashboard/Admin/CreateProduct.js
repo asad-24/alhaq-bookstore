@@ -43,8 +43,18 @@ export default function ManageProduct() {
   }, []);
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+  
+    // Allow only positive numbers for 'quantity' and 'price'
+    if (name === 'quantity' || name === 'price') {
+      if (value === '' || /^[1-9]\d*$/.test(value)) {
+        setFormData({ ...formData, [name]: value });
+      }
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
   };
+  
 
   // create product
   const handleSubmit = async (e) => {
@@ -79,10 +89,10 @@ export default function ManageProduct() {
   return (
     <>
       <Layout
-        title="Create Products - Admin Panel | TrendBlend"
-        description="Create new products in the admin panel of TrendBlend. Add detailed information including name, description, price, quantity, category, and shipping options. Expand your product inventory and offer a wider selection to your customers."
-        keywords="admin panel, create products, product creation, inventory management, TrendBlend, e-commerce"
-        author="Usman"
+        title="Create Products - Admin Panel | Al-Haq BookStore"
+        description="Create new products in the admin panel of Al-Haq BookStore. Add detailed information including name, description, price, quantity, category, and shipping options. Expand your product inventory and offer a wider selection to your customers."
+        keywords="admin panel, create products, product creation, inventory management, Al-Haq BookStore, e-commerce"
+        author="Asad"
       >
         <div className="container-fluid py-5">
           <div className="row">
