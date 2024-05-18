@@ -32,7 +32,7 @@ main {
   flex-direction: column;
   justify-content: start;
   align-items: start;
-  text-align: start;
+  text-align: center;
   background-image: url("./assets/images/cover-photo.jpg");
   background-size: cover;
   background-position: center;
@@ -42,6 +42,7 @@ main {
   width: 100%;
   // position: relative;
   padding: 2rem;
+  margin-top: 4rem;
  
 }
 .background-img.home::before {
@@ -60,7 +61,7 @@ main {
   display: flex;
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  justify-content: center;
   align-items: start;
   text-align: start;
   background-image: url("./assets/images/cover-photo.jpg");

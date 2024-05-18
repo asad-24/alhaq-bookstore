@@ -10,8 +10,8 @@ export default function HeroSection({ heading, page, paragraph, style }) {
       style={{ height: `${style}` }}
     >
       <div className="row">
-        <div className="col-12 col-md-8 d-flex flex-column justify-content-center align-items-center text-center position-absolute ">
-          <motion.h1 className="display-8 mb-1  fw-bold">{heading}</motion.h1>
+        <div className="col-12 col-md-8 d-flex flex-column justify-content-center align-items-center text-center position-absolute " style={{width:"90%"}}>
+          <motion.h1 className="display-8 mb-1  fw-bold text-center">{heading}</motion.h1>
           <motion.p className="align-self-around fw-bold mb-1 fs-4 ">
             
           <FaArrowRight className="fw-bold slideInLeft" />
