@@ -7,12 +7,12 @@ export default function SearchProducts() {
   const [values] = useSearchContext();
   const [loading, setLoading] = useState(true);
 
-  const title = "Search Products - TrendBlend";
+  const title = "Search Products - AL-haq BookShop";
   const description =
-    "Search for trendy fashion apparel, accessories, and home decor on TrendBlend. Find the perfect products to enhance your personal style and elevate your living space.";
+    "Search for books, on AL-haq BookShop. Find the perfect products to enhance your personal style and elevate your living space.";
   const keywords =
-    "search products, trendy fashion, home decor, clothing, accessories, online store";
-  const author = "Usman";
+    "search products,  home decor, books, accessories, online store";
+  const author = "Asd";
 
   const products = values.result || [];
 

@@ -61,8 +61,8 @@ function Login() {
                   <h1 className="fs-4 fw-bold mb-4">Login</h1>
                 </div>
                 <form onSubmit={handleSubmit}>
-                  <div className="mb-3">
-                    <label className="form-label">Email <p className="text-danger">*</p> </label>
+                  <div className="mb-1">
+                    <label className="form-label d-flex">Email <p className="text-danger ms-1">*</p> </label>
                     <input
                       type="email"
                       className="form-control"

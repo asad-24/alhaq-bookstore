@@ -40,9 +40,9 @@ export default function GetSingleProduct() {
   const pageTitle = isLoading ? "Loading..." : ` ${category?.slug}`;
   const pageDescription = isLoading
     ? "Loading product information..."
-    : `Learn more about ${category?.name} at TrendBlend.`;
+    : `Learn more about ${category?.name} at bookstore.`;
   const pageKeywords = product
-    ? `${category?.name}, TrendBlend, e-commerce, product`
+    ? `${category?.name}, bookstore, e-commerce, product`
     : "";
 
   return (
@@ -50,13 +50,13 @@ export default function GetSingleProduct() {
       title={pageTitle}
       description={pageDescription}
       keyword={pageKeywords}
-      author="Usman"
+      author="Asad"
     >
       <HeroSection
         page={pageTitle}
         paragraph={isLoading ? "Loading..." : ` ${category?.slug}`}
         heading={isLoading ? "" : category?.slug}
-        style="other"
+        style="home"
       />
       <div className="container">
         <div className="row">
