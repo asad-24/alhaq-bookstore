@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 
 // payments
 import DropIn from "braintree-web-drop-in-react";
-import {loadStripe} from '@stripe/stripe-js';
+// import {loadStripe} from '@stripe/stripe-js';
 // contexts
 import { useCartContext } from "../../../context/cartContext";
 import { useAuthContext } from "../../../context/AuthContext";
 import { PORT } from "../../../index";
-import { useNavigate } from "react-router-dom";
+import { Link,  useNavigate } from "react-router-dom";
 // components
 import Layout from "../../../components/Frontend/Layout";
 import HeroSection from "../../../components/Frontend/HeroSection";
@@ -87,34 +87,34 @@ function CartPage() {
       console.log(error);
     }
   };
-  useEffect(() => {
-    getToken();
-  }, [auth?.token]);
+  // useEffect(() => {
+  //   getToken();
+  // }, [auth?.token]);
 
-  // handle payments
-  const handlePayments = async () => {
-    try {
-      setLoading(true);
-      const { nonce } = await instance.requestPaymentMethod();
+  // // handle payments
+  // const handlePayments = async () => {
+  //   try {
+  //     setLoading(true);
+  //     const { nonce } = await instance.requestPaymentMethod();
 
-      // Create a new array without the 'image' property
+  //     // Create a new array without the 'image' property
 
-      const { data } = await axios.post(
-        `${PORT}/api/v1/product/braintree/payment`,
-        { cart, nonce }
-      );
+  //     const { data } = await axios.post(
+  //       `${PORT}/api/v1/product/braintree/payment`,
+  //       { cart, nonce }
+  //     );
 
-      // console.log(data);
-      setLoading(false);
-      localStorage.removeItem("cart");
-      setCart([]);
-      window.location = "/dashboard/user/orders";
-      window.showToast("Payment completed successfully", "success");
-    } catch (error) {
-      console.error(error);
-      window.showToast(error.message, "error");
-    }
-  };
+  //     // console.log(data);
+  //     setLoading(false);
+  //     localStorage.removeItem("cart");
+  //     setCart([]);
+  //     window.location = "/dashboard/user/orders";
+  //     window.showToast("Payment completed successfully", "success");
+  //   } catch (error) {
+  //     console.error(error);
+  //     window.showToast(error.message, "error");
+  //   }
+  // };
   return (
     <>
       <Layout
@@ -247,7 +247,20 @@ function CartPage() {
                     }}
                     onInstance={(instance) => setInstance(instance)}
                   />
+
+                  <Link to={"/checkout"}>
                   <button
+                    className="Btn"
+                   
+                    // style={{ width: "12rem" }}
+                    // disabled={!loading || !instance || !auth?.user?.address}
+                  >
+                       Pay
+                        <BsFillCreditCardFill className="svgIcon"  />
+                  </button>
+                  </Link>
+            
+                  {/* <button
                     className="Btn"
                     onClick={handlePayments}
                     // style={{ width: "12rem" }}
@@ -266,10 +279,10 @@ function CartPage() {
                     ) : (
                       <>
                         Pay
-                        <BsFillCreditCardFill className="svgIcon" />
+                        <BsFillCreditCardFill className="svgIcon"  />
                       </>
                     )}
-                  </button>
+                  </button> */}
                 </div>
               </div>
             </div>

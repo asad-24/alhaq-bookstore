@@ -12,6 +12,7 @@ import GetSingleProduct from "./Home/GetSingleProduct";
 import SearchProducts from "./Home/SearchProducts";
 import SingleCategoryProducts from "./Home/SingleCategoryProducts";
 import CartPage from "./Home/CartPage";
+import Checkout from "./Home/Checkout";
 
 function index() {
   return (
@@ -26,6 +27,7 @@ function index() {
         <Route path="/policy" element={<Policy />} />
         <Route path="/search" element={<SearchProducts />} />
         <Route path="/get-product/:slug" element={<GetSingleProduct />} />
+        <Route path="/checkout" element={<Checkout />} />
         <Route path="*" element={<NoPage />} />
       </Routes>
     </>
