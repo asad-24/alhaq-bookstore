@@ -92,7 +92,7 @@ export default function GetSingleProduct() {
       keyword={
         product ? `${product?.name}, Bookstore, e-commerce, product` : ""
       }
-      author="Usman"
+      author="Asad"
     >
       <HeroSection
         page={isLoading ? "Loading..." : `About - ${product?.name}`}

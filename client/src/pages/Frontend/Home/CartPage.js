@@ -77,16 +77,16 @@ function CartPage() {
   };
 
   // get payments gateway token
-  const getToken = async () => {
-    try {
-      const { data } = await axios.get(
-        `${PORT}/api/v1/product/braintree/token`
-      );
-      setClientToken(data?.clientToken);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const getToken = async () => {
+  //   try {
+  //     const { data } = await axios.get(
+  //       `${PORT}/api/v1/product/braintree/token`
+  //     );
+  //     setClientToken(data?.clientToken);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
   // useEffect(() => {
   //   getToken();
   // }, [auth?.token]);
@@ -248,17 +248,21 @@ function CartPage() {
                     onInstance={(instance) => setInstance(instance)}
                   />
 
-                  <Link to={"/checkout"}>
-                  <button
+<button
                     className="Btn"
-                   
+                    onClick={() => {
+                      if (auth && auth.user) {
+                        navigate("/checkout");
+                      } else {
+                        alert("Please login first to make a payment");
+                      }
+                    }}
                     // style={{ width: "12rem" }}
                     // disabled={!loading || !instance || !auth?.user?.address}
                   >
-                       Pay
-                        <BsFillCreditCardFill className="svgIcon"  />
+                    Pay
+                    <BsFillCreditCardFill className="svgIcon" />
                   </button>
-                  </Link>
             
                   {/* <button
                     className="Btn"
