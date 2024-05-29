@@ -117,7 +117,7 @@ const Checkout = (props) => {
 		  formData.append('productName', cData.productName);
 		  formData.append('userId', auth.user._id);
 	  
-		  const response = await fetch('/api/checkout', {
+		  const response = await fetch('/checkout', {
 			method: 'POST',
 			body: formData,
 			headers: {
