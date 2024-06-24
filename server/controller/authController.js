@@ -51,44 +51,61 @@ export const registerUser = async (req, res) => {
   }
 };
 
-// LOGIN POST
 export const loginUser = async (req, res) => {
   const { email, password } = req.body;
+
+  // Validate input fields
   if (!email || !password) {
     return res.status(400).send({
       success: false,
       message: "Please fill all the fields",
     });
   }
+
   try {
+    // Find user by email
     const user = await userModel.findOne({ email });
     if (!user) {
-      return res.send({
+      return res.status(401).send({
         success: false,
-        message: "user not found Login First",
+        message: "User not found. Please register first.",
       });
     }
+
+    // Compare password
     const match = await comparePassword(password, user.password);
     if (!match) {
-      return res.send({
+      return res.status(401).send({
         success: false,
         message: "Invalid Password or Email",
       });
     }
-    const token = JWT.sign({ _id: user._id }, '09disf9js9i0jk0', {
+
+    // Generate JWT token
+    const token = JWT.sign({ _id: user._id }, "9873492898wdj9ajhsdf", {
       expiresIn: "7d",
     });
+
+    res.cookie("token", token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production", // Use secure cookies in production
+      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+    });
+
+    // Respond with user and token
     res.status(200).send({
       success: true,
-      message: "Login Successfully",
+      message: "Login Successful",
       user,
       token,
     });
+
   } catch (error) {
-    console.log(error)
-    return handleError(res, 500, "Server Error while login user");
+    console.error(error);
+    return handleError(res, 500, "Server error while logging in user");
   }
 };
+
 
 // test controller
 

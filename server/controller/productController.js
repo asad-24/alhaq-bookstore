@@ -36,9 +36,8 @@ export const createProduct = async (req, res) => {
     for (const field of requiredFields) {
       if (!req.fields[field]) {
         return res.status(500).send({
-          error: `${
-            field.charAt(0).toUpperCase() + field.slice(1)
-          } is required`,
+          error: `${field.charAt(0).toUpperCase() + field.slice(1)
+            } is required`,
         });
       }
     }
@@ -161,9 +160,8 @@ export const updateProduct = async (req, res) => {
     for (const field of requiredFields) {
       if (!req.fields[field]) {
         return res.status(400).send({
-          error: `${
-            field.charAt(0).toUpperCase() + field.slice(1)
-          } is required`,
+          error: `${field.charAt(0).toUpperCase() + field.slice(1)
+            } is required`,
         });
       }
     }
@@ -383,42 +381,48 @@ export const productCategory = async (req, res) => {
 //   }
 // };
 
+// export const createOrder = async (req, res) => {
+//   // try {
+//   const { paymentMethod, cart } = req.body;
+//   // const user = await userModel.findById(req.user._id);
+//   console.log("hi iam user._id", req.user.name)
+//   // Ensure user is authenticated and req.user._id is populated
+//   // if (!req.user || !req.user._id) {
+//   //   return res.status(401).json({ message: "Unauthorized" });
+//   // }
+
+//   // // Validate if cart is present and is an array
+//   // if (!Array.isArray(cart) || cart.length === 0) {
+//   //   return res.status(400).json({ message: "Cart should be a non-empty array." });
+//   // }
+
+//   let total = 0;
+//   cart.forEach((item) => {
+//     total += parseInt(item.price); // Assuming price is a numeric field
+//   });
+
+//   const order = new Order({
+//     buyer: req.user._id, // Assuming req.user._id is correctly populated
+//     products: cart,
+//     paymentMethod: paymentMethod,
+//     totalPrice: total,
+//   });
+
+//   const savedOrder = await order.save();
+
+//   res.status(201).json({ message: "Order placed successfully", order: savedOrder });
+//   // } catch (error) {
+//   //   console.error("Error during order creation:", {
+//   //     message: error.message,
+//   //     stack: error.stack,
+//   //     error,
+//   //   });
+//   //   res.status(500).json({ message: "Failed to create order", error: error.message });
+//   // }
+// };
+
 export const createOrder = async (req, res) => {
-  // try {
-    const { paymentMethod, cart } = req.body;
-    // const user = await userModel.findById(req.user._id);
-    console.log("hi iam user._id", req.user.name)
-    // Ensure user is authenticated and req.user._id is populated
-    // if (!req.user || !req.user._id) {
-    //   return res.status(401).json({ message: "Unauthorized" });
-    // }
+  // console.log('ooyeah')
+  return res.status(200).json({ message: "oo yeah", user: req.user });
 
-    // // Validate if cart is present and is an array
-    // if (!Array.isArray(cart) || cart.length === 0) {
-    //   return res.status(400).json({ message: "Cart should be a non-empty array." });
-    // }
-
-    let total = 0;
-    cart.forEach((item) => {
-      total += parseInt(item.price); // Assuming price is a numeric field
-    });
-
-    const order = new Order({
-      buyer: req.user._id, // Assuming req.user._id is correctly populated
-      products: cart,
-      paymentMethod: paymentMethod,
-      totalPrice: total,
-    });
-
-    const savedOrder = await order.save();
-
-    res.status(201).json({ message: "Order placed successfully", order: savedOrder });
-  // } catch (error) {
-  //   console.error("Error during order creation:", {
-  //     message: error.message,
-  //     stack: error.stack,
-  //     error,
-  //   });
-  //   res.status(500).json({ message: "Failed to create order", error: error.message });
-  // }
-};
+} 

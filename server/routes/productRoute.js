@@ -77,7 +77,7 @@ router.get("/related-product/:pid/:cid", relatedProducts);
 router.get("/product-category/:slug", productCategory);
 
 // create checkout
-router.post("/checkout",   createOrder);
+router.post("/checkout", requireSignIn, createOrder);
 
 // payments route
 // router.get("/brainsree/token", braintreeToken);

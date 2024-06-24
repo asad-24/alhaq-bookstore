@@ -16,6 +16,7 @@ import { connectDB } from "./config/db.js";
 import authRoutes from "./routes/authRoute.js";
 import categoryRouter from "./routes/categoryRoutes.js";
 import productRouter from "./routes/productRoute.js";
+import cookieParser from "cookie-parser";
 // import orderRouter from "./routes/orderRoute.js"; // Import new order routes
 
 // Initialize express app
@@ -30,6 +31,7 @@ connectDB();
 
 // Middleware
 app.use(cors());
+app.use(cookieParser());
 app.use(morgan("dev"));
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ extended: true, limit: "50mb", parameterLimit: 50000 }));
