@@ -3,7 +3,6 @@ import colors from "colors";
 import dotenv from "dotenv";
 import morgan from "morgan";
 import cors from "cors";
-import multer from "multer";
 import path from "path";
 import { fileURLToPath } from "url";
 
@@ -17,13 +16,14 @@ import { connectDB } from "./config/db.js";
 import authRoutes from "./routes/authRoute.js";
 import categoryRouter from "./routes/categoryRoutes.js";
 import productRouter from "./routes/productRoute.js";
+// import orderRouter from "./routes/orderRoute.js"; // Import new order routes
 
 // Initialize express app
 const app = express();
 
 // Determine current directory
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = path.dirname(__filename);
 
 // Connect to database
 connectDB();
@@ -34,42 +34,14 @@ app.use(morgan("dev"));
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ extended: true, limit: "50mb", parameterLimit: 50000 }));
 
-// Static folder for uploaded files
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
-
-// Setup multer for file uploads
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, 'uploads/');
-  },
-  filename: (req, file, cb) => {
-    cb(null, `${Date.now()}-${file.originalname}`);
-  },
-});
-const upload = multer({ storage });
+// Static folder for uploaded files (if needed)
+// app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Define routes
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/category", categoryRouter);
 app.use("/api/v1/product", productRouter);
-
-// File upload route
-app.post('/api/uploadScreenshot', upload.single('screenshot'), (req, res) => {
-  try {
-    // Log the uploaded file and other form data
-    console.log("Uploaded file:", req.file);
-    console.log("Form data:", req.body);
-
-    if (!req.file) {
-      return res.status(400).json({ message: 'No file uploaded' });
-    }
-
-    res.status(200).json({ message: 'File uploaded successfully', file: req.file });
-  } catch (error) {
-    console.error("File upload error:", error);
-    res.status(500).json({ message: 'Server error' });
-  }
-});
+// app.use("/api/v1/order", orderRouter); // Use the new order routes
 
 // Home route
 app.get("/", (req, res) => {

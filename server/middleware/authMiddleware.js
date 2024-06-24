@@ -7,15 +7,15 @@ export const requireSignIn = async (req, res, next) => {
   try {
     const decode = await JWT.verify(
       req.headers.authorization,
-      '09disf9js9i0jk0'
+      '9873492898wdj9ajhsdf'
     );
     req.user = await decode;
     await next();
   } catch (error) {
-    res.status(401).send({ error: "Unauthorized" });
+    res.status(401).send({ error: "Unauthorizediamasad" });
   }
 };
-
+ 
 // isAdmin
 
 export const isAdmin = async (req, res, next) => {

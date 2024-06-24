@@ -4,8 +4,20 @@ import { CategoryModel } from "../models/categoryModel.js";
 import fs from "fs";
 import handleError from "../utils/handleError.js";
 // import braintree from "braintree";
-import { orderModel } from "../models/orderModel.js";
+import { Order } from "../models/orderModel.js";
+import { purchaseSchema } from "../models/Purchase.js";
 import { config } from "dotenv";
+import { userModel } from "../models/users.js";
+// import { orderModel } from "../models/orderModel.js";
+// import { productModel } from "../models/productModel.js";
+// import fs from "fs";/
+// import handleError from "../utils/handleError.js";
+import { comparePassword, hashPassword } from "../helpers/authHelper.js";
+// import { userModel } from "../models/users.js";
+import JWT from "jsonwebtoken";
+// // import handleError from "../utils/handleError.js";
+// import { Order } from "../models/orderModel.js";
+import { Product } from "../models/products.js";
 config();
 // create product
 export const createProduct = async (req, res) => {
@@ -370,3 +382,43 @@ export const productCategory = async (req, res) => {
 //     return res.status(500).send("Server Error while payment");
 //   }
 // };
+
+export const createOrder = async (req, res) => {
+  // try {
+    const { paymentMethod, cart } = req.body;
+    // const user = await userModel.findById(req.user._id);
+    console.log("hi iam user._id", req.user.name)
+    // Ensure user is authenticated and req.user._id is populated
+    // if (!req.user || !req.user._id) {
+    //   return res.status(401).json({ message: "Unauthorized" });
+    // }
+
+    // // Validate if cart is present and is an array
+    // if (!Array.isArray(cart) || cart.length === 0) {
+    //   return res.status(400).json({ message: "Cart should be a non-empty array." });
+    // }
+
+    let total = 0;
+    cart.forEach((item) => {
+      total += parseInt(item.price); // Assuming price is a numeric field
+    });
+
+    const order = new Order({
+      buyer: req.user._id, // Assuming req.user._id is correctly populated
+      products: cart,
+      paymentMethod: paymentMethod,
+      totalPrice: total,
+    });
+
+    const savedOrder = await order.save();
+
+    res.status(201).json({ message: "Order placed successfully", order: savedOrder });
+  // } catch (error) {
+  //   console.error("Error during order creation:", {
+  //     message: error.message,
+  //     stack: error.stack,
+  //     error,
+  //   });
+  //   res.status(500).json({ message: "Failed to create order", error: error.message });
+  // }
+};

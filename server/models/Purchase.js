@@ -1,27 +1,36 @@
 import mongoose from 'mongoose';
 
-const purchaseSchema = new mongoose.Schema({
+export const purchaseSchema = new mongoose.Schema({
   userId: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
-    ref: 'User'
+    ref: 'User',
+    index: true // Index for faster query
   },
-  productId: {
-    type: mongoose.Schema.Types.ObjectId,
-    required: true,
-    ref: 'Product'
-  },
-  productName: {
-    type: String,
-    required: true
-  },
-  productPrice: {
-    type: Number,
-    required: true
-  },
+  products: [
+    {
+      productId: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'Product',
+        index: true // Index for faster query
+      },
+      productName: {
+        type: String,
+        required: true,
+        trim: true
+      },
+      productPrice: {
+        type: Number,
+        required: true,
+        min: 0
+      }
+    }
+  ],
   screenshotUrl: {
     type: String,
-    required: true
+    required: true,
+    trim: true
   },
   createdAt: {
     type: Date,

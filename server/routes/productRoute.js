@@ -17,9 +17,10 @@ import {
   relatedProducts,
   searchProduct,
   updateProduct,
+  createOrder
 
 } from "../controller/productController.js";
-import { createOrder } from '../controller/purchases.js';
+// import {  } from '../controller/purchases.js';
 const router = express.Router();
 
 // routes
@@ -76,10 +77,10 @@ router.get("/related-product/:pid/:cid", relatedProducts);
 router.get("/product-category/:slug", productCategory);
 
 // create checkout
-router.post('/checkout', createOrder);
+router.post("/checkout",   createOrder);
 
 // payments route
-// router.get("/braintree/token", braintreeToken);
+// router.get("/brainsree/token", braintreeToken);
 
 // // payment route
 // router.post("/braintree/payment", requireSignIn, braintreePayments);

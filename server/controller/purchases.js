@@ -33,6 +33,7 @@ export const createOrder = async (req, res) => {
       totalPrice,
     });
 
+    console.log('new order', newOrder)
     await newOrder.save();
 
     return res.status(201).send({
@@ -41,7 +42,7 @@ export const createOrder = async (req, res) => {
       order: newOrder,
     });
   } catch (error) {
-    console.error(error);
+    console.error('error creating order', error);
     return handleError(res, 500, "Server Error creating order");
   }
 };

@@ -2,7 +2,14 @@ import { comparePassword, hashPassword } from "../helpers/authHelper.js";
 import { userModel } from "../models/users.js";
 import JWT from "jsonwebtoken";
 import handleError from "../utils/handleError.js";
-import { orderModel } from "../models/orderModel.js";
+import { Order } from "../models/orderModel.js";
+import { Product } from "../models/products.js";
+
+
+
+
+
+
 
 export const registerUser = async (req, res) => {
   try {
@@ -152,6 +159,7 @@ export const updateProfile = async (req, res) => {
     const { name, email, password, address, phone } = req.body;
     // console.log(name + email + address + phone);
     const user = await userModel.findById(req.user._id);
+    // console.log("hi iam user._id",req.user._id, user)
     if (password && password.length < 6) {
       return res.json({ error: "password is require and 6 character long" });
     }
@@ -180,7 +188,7 @@ export const updateProfile = async (req, res) => {
 // orders
 export const getOrders = async (req, res) => {
   try {
-    const orders = await orderModel
+    const orders = await Order
       .find({ buyer: req.user._id })
       .populate("product", "-photo")
       .populate("buyer", "name");
@@ -194,9 +202,10 @@ export const getOrders = async (req, res) => {
 };
 
 // get all orders
+
 export const getAllOrders = async (req, res) => {
   try {
-    const orders = await orderModel
+    const orders = await Product
       .find({})
       .populate("product", "-photo")
       .populate("buyer", "name")
@@ -208,6 +217,9 @@ export const getAllOrders = async (req, res) => {
     return handleError(res, 500, "Server Error while getting orders");
   }
 };
+
+
+// Handle error function
 
 // update status
 export const updateStatus = async (req, res) => {

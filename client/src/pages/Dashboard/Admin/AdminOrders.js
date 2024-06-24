@@ -12,13 +12,14 @@ export default function AdminOrders() {
   const [error, setError] = useState(null);
   const [status, setStatus] = useState([
     "not process",
-    "processing",
+    "processing",   
     "shipped",
     "delivered",
   ]);
   const getOrders = async () => {
     try {
       const { data } = await axios.get(`${PORT}/api/v1/auth/get-allOrders`);
+      console.log(data)
       setOrders(data);
       setLoading(false);
     } catch (error) {
@@ -59,98 +60,91 @@ export default function AdminOrders() {
             <div className="col-md-9">
               <h2 className="text-center">All Orders</h2>
               {loading ? (
-                <div className="d-flex justify-content-center align-items-center">
-                  <div className="text-center loader"></div>
+  <div className="d-flex justify-content-center align-items-center">
+    <div className="text-center loader"></div>
+  </div>
+) : error ? (
+  <div className="text-center text-danger">{error}</div>
+) : (
+  <>
+    {orders.length === 0 ? (
+      <div className="text-center">No orders found.</div>
+    ) : (
+      <>
+        {orders.map((order) => (
+          <div key={order._id}>
+            <div className="table-responsive">
+              <table className="table table-striped shadow">
+                <thead>
+                  <tr>
+                    <th>Buyer</th>
+                    <th>Product Count</th>
+                    <th>Status</th>
+                    <th>Payment Status</th>
+                    <th>Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>{order.buyer.name}</td>
+                    <td>{order.products.length}</td>
+                    <td>
+                      <Select
+                        defaultValue={order.status}
+                        style={{
+                          width: 120,
+                        }}
+                        onChange={(value) =>
+                          handelStatusChange(order._id, value)
+                        }
+                        bordered={false}
+                      >
+                        {status.map((s, i) => (
+                          <Option key={i} value={s}>
+                            {s}
+                          </Option>
+                        ))}
+                      </Select>
+                    </td>
+                    <td>
+                      {order.payment.success ? "Success" : "Failed"}
+                    </td>
+                    <td>{moment(order.createdAt).fromNow()}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div className="container">
+              {order.products.map((product) => (
+                <div className="card mb-4" key={product._id}>
+                  <div className="row g-0">
+                    <div className="col-sm-4">
+                      <img
+                        src={`${PORT}/api/v1/product/get-photo/${product._id}`}
+                        alt={product.name}
+                        className="card-img"
+                      />
+                    </div>
+                    <div className="col-sm-8">
+                      <div className="card-body">
+                        <h5 className="card-title">{product.name}</h5>
+                        <p className="card-text">
+                          {product.description.substring(0, 20)}
+                        </p>
+                        <p className="card-text">${product.price}</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              ) : error ? (
-                <div className="text-center text-danger">{error}</div>
-              ) : (
-                <>
-                  {orders.length === 0 ? (
-                    <div className="text-center">No orders found.</div>
-                  ) : (
-                    <>
-                      {orders.map((order) => (
-                        <div key={order._id}>
-                          <div className="table-responsive">
-                            <table className="table table-striped shadow">
-                              <thead>
-                                <tr>
-                                  <th>Buyer</th>
-                                  <th>Product Count</th>
-                                  <th>Status</th>
-                                  <th>Payment Status</th>
-                                  <th>Date</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr>
-                                  <td>{order.buyer.name}</td>
-                                  <td>{order.product?.length}</td>
-                                  <td>
-                                    <Select
-                                      defaultValue={order?.status}
-                                      style={{
-                                        width: 120,
-                                      }}
-                                      onChange={(value) =>
-                                        handelStatusChange(order._id, value)
-                                      }
-                                      bordered={false}
-                                    >
-                                      {status.map((s, i) => {
-                                        return (
-                                          <Option key={i} value={s}>
-                                            {s}
-                                          </Option>
-                                        );
-                                      })}
-                                    </Select>
-                                  </td>
-                                  <td>
-                                    {order.payment.success
-                                      ? "Success"
-                                      : "Failed"}
-                                  </td>
-                                  <td>{moment(order.createdAt).fromNow()}</td>
-                                </tr>
-                              </tbody>
-                            </table>
-                          </div>
-                          <div className="container">
-                            {order.product?.map((product) => (
-                              <div className="card mb-4" key={product._id}>
-                                <div className="row g-0">
-                                  <div className="col-sm-4">
-                                    <img
-                                      src={`${PORT}/api/v1/product/get-photo/${product._id}`}
-                                      alt={product.name}
-                                      className="card-img"
-                                    />
-                                  </div>
-                                  <div className="col-sm-8">
-                                    <div className="card-body">
-                                      <h5 className="card-title">
-                                        {product.name}
-                                      </h5>
-                                      <p className="card-text">
-                                        {product.description.substring(0, 20)}
-                                      </p>
-                                      <p className="card-text">
-                                        ${product.price}
-                                      </p>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      ))}
-                    </>
-                  )}
-                </>
-              )}
+              ))}
+            </div>
+          </div>
+        ))}
+      </>
+    )}
+  </>
+)}
+
             </div>
           </div>
         </div>

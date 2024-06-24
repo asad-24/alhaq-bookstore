@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
 
 // payments
-import DropIn from "braintree-web-drop-in-react";
+// import DropIn from "braintree-web-drop-in-react";
 // import {loadStripe} from '@stripe/stripe-js';
 // contexts
 import { useCartContext } from "../../../context/cartContext";
 import { useAuthContext } from "../../../context/AuthContext";
 import { PORT } from "../../../index";
-import { Link,  useNavigate } from "react-router-dom";
+import {   useNavigate } from "react-router-dom";
 // components
 import Layout from "../../../components/Frontend/Layout";
 import HeroSection from "../../../components/Frontend/HeroSection";
-import axios from "axios";
+// import axios from "axios";
 // motion
 import { motion } from "framer-motion";
 // icons
@@ -20,8 +20,8 @@ function CartPage() {
   const navigate = useNavigate();
   const [cart, setCart] = useCartContext();
 
-  const [clientToken, setClientToken] = useState("");
-  const [instance, setInstance] = useState("");
+  // const [clientToken, setClientToken] = useState("");
+  // const [instance, setInstance] = useState("");
   // const [isLoading, setIsLoading] = useState(false);
 
   const { auth } = useAuthContext();
@@ -38,7 +38,7 @@ function CartPage() {
   }
 
   const [isLoading, setIsLoading] = useState(true);
-  const [loading, setLoading] = useState(true);
+  // const [loading, setLoading] = useState(true);
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
@@ -63,7 +63,8 @@ function CartPage() {
     let subtotalPrice = 0;
     try {
       cart?.map((item) => {
-        subtotalPrice += item.price;
+        return(
+        subtotalPrice += item.price);
       });
       return subtotalPrice.toLocaleString("en-US", {
         currency: "PKR",
@@ -238,7 +239,7 @@ function CartPage() {
                   )}
                 </div>
                 <div className="mt-2">
-                  <DropIn
+                  {/* <DropIn
                     options={{
                       authorization: clientToken,
                       paypal: {
@@ -246,7 +247,7 @@ function CartPage() {
                       },
                     }}
                     onInstance={(instance) => setInstance(instance)}
-                  />
+                  /> */}
 
 <button
                     className="Btn"
